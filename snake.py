@@ -57,17 +57,16 @@ class Snake:
                     self.snake_body = self.body_horizontal
                     win.blit(self.snake_body, snake)
                 else:
-                    if ((previous_block.x == -1 and next_block.y ==-1) or (previous_block.y ==-1 and next_block.x ==-1)):
+                    if previous_block.x == -1 and next_block.y == -1 or previous_block.y == -1 and next_block.x == -1:
                         win.blit(self.body_tl, snake)
+                    elif previous_block.x == -1 and next_block.y == 1 or previous_block.y == 1 and next_block.x == -1:
+                        win.blit(self.body_bl, snake)
+                    elif previous_block.x == 1 and next_block.y == -1 or previous_block.y == -1 and next_block.x == 1:
+                        win.blit(self.body_tr, snake)
+                    elif previous_block.x == 1 and next_block.y == 1 or previous_block.y == 1 and next_block.x == 1:
+                        win.blit(self.body_br, snake)
 
-                    if ((previous_block.x == -1 and next_block.y ==-1) or (previous_block.y ==-1 and next_block.x ==-1)):
-                        win.blit(self.body_tl, snake)
 
-                    if ((previous_block.x == -1 and next_block.y ==-1) or (previous_block.y ==-1 and next_block.x ==-1)):
-                        win.blit(self.body_tl, snake)
-
-                    if ((previous_block.x == -1 and next_block.y ==-1) or (previous_block.y ==-1 and next_block.x ==-1)):
-                        win.blit(self.body_tl, snake)
 
 
 

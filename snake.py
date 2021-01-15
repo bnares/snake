@@ -141,6 +141,7 @@ class Main:
         self.draw_grass()
         self.snake.draw_snake()
         self.fruit.draw_fruit()
+        self.draw_score()
 
     def update_snake(self):
         self.snake.move_snake()
@@ -185,9 +186,22 @@ class Main:
                         grass_rect  = pygame.Rect(coll*cell_size,row*cell_size,cell_size, cell_size)
                         pygame.draw.rect(win,grass_color, grass_rect)
 
+    def draw_score(self):
+        result = len(self.snake.body)-3
+        score = game_font.render(str(result), True, (56,74,12))
+        x_pos = cell_size*cell_number-60
+        y_pos = cell_size*cell_number-40
+        score_rect = score.get_rect(center = (x_pos, y_pos))
+        win.blit(score, score_rect)
+
+        #nizej tworzysz z jablka obiekt typu rect i pop prawej stronie tego jablka maja byc wspolrzene wyniku ze zmiennej score_rect
+        apple_rect = apple.get_rect(midright = (score_rect.left, score_rect.centery))
+        win.blit(apple, apple_rect)
+
+
 cell_size = 30
 cell_number = 20
-
+game_font = pygame.font.Font(None, 25)
 clock = pygame.time.Clock()
 win = pygame.display.set_mode((cell_size*cell_number,cell_size*cell_number))
 

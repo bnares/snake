@@ -68,16 +68,6 @@ class Snake:
 
 
 
-
-
-
-
-            #else:
-               # pygame.draw.rect(win, (183,111,122), snake)
-            #pygame.draw.rect(win, (183,111,122), snake)
-
-
-
     def move_snake(self):
         if self.new_block == False:
             body_copy = self.body[ : -1]
@@ -148,6 +138,7 @@ class Main:
         self.fruit = Fruit()
 
     def draw_elements(self):
+        self.draw_grass()
         self.snake.draw_snake()
         self.fruit.draw_fruit()
 
@@ -183,6 +174,16 @@ class Main:
     def game_over(self):
         pygame.quit()
         sys.exit()
+
+
+    def draw_grass(self):
+        grass_color = (167,209,61)
+        for coll in range(cell_number):
+            if coll%2!=0:
+                for row in range(cell_number):
+                    if(row%2!=0):
+                        grass_rect  = pygame.Rect(coll*cell_size,row*cell_size,cell_size, cell_size)
+                        pygame.draw.rect(win,grass_color, grass_rect)
 
 cell_size = 30
 cell_number = 20
